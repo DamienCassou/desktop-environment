@@ -1,0 +1,81 @@
+* desktop-environment
+
+  #+BEGIN_HTML
+      <p>
+        <a href="https://stable.melpa.org/#/desktop-environment">
+          <img alt="MELPA Stable" src="https://stable.melpa.org/packages/desktop-environment-badge.svg"/>
+        </a>
+
+        <a href="https://melpa.org/#/desktop-environment">
+          <img alt="MELPA Stable" src="https://melpa.org/packages/desktop-environment-badge.svg"/>
+        </a>
+
+        <a href="https://gitlab.petton.fr/DamienCassou/desktop-environment/commits/master">
+          <img alt="pipeline status" src="https://gitlab.petton.fr/DamienCassou/desktop-environment/badges/master/pipeline.svg" />
+        </a>
+      </p>
+  #+END_HTML
+
+** Summary
+
+The package desktop-environment provides commands and a global minor
+mode to control your GNU/Linux desktop from Emacs.
+
+With desktop-environment, you can control the brightness and volume as
+well as take screenshots and lock your screen.  The package depends on
+the availability of shell commands to do the hard work for us.  These
+commands can be changed by customizing the appropriate variables.
+
+The global minor mode ~desktop-environment-mode~ binds standard keys
+to provided commands: e.g., ~<XF86AudioRaiseVolume>~ to raise the
+volume, ~<print>~ to take a screenshot, and ~<s-l>~ to lock the
+screen.
+
+** Installing
+
+Add the following to your initialization file:
+
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'load-path "~/.emacs.d/lib/desktop-environment/")
+  (require 'desktop-environment)
+#+END_SRC
+
+If you want all commands to be bound to keys, add this line after the
+ones above:
+
+#+BEGIN_SRC emacs-lisp
+  (desktop-environment-mode)
+#+END_SRC
+
+** Usage
+
+The following table summarizes the available commands and their
+keybinding if ~desktop-environment-mode~ is enabled:
+
+| *Command*                                       | *Key binding*               |
+|-------------------------------------------------+-----------------------------|
+| desktop-environment-brightness-increment        | ~<XF86MonBrightnessUp>~     |
+| desktop-environment-brightness-decrement        | ~<XF86MonBrightnessDown>~   |
+| desktop-environment-brightness-increment-slowly | ~S-<XF86MonBrightnessUp>~   |
+| desktop-environment-brightness-decrement-slowly | ~S-<XF86MonBrightnessDown>~ |
+| desktop-environment-volume-increment            | ~<XF86AudioRaiseVolume>~    |
+| desktop-environment-volume-decrement            | ~<XF86AudioLowerVolume>~    |
+| desktop-environment-volume-increment-slowly     | ~S-<XF86AudioRaiseVolume>~  |
+| desktop-environment-volume-decrement-slowly     | ~S-<XF86AudioLowerVolume>~  |
+| desktop-environment-toggle-mute                 | ~<XF86AudioMute>~           |
+| desktop-environment-toggle-microphone-mute      | ~<XF86AudioMicMute>~        |
+| desktop-environment-screenshot-part             | ~S-<print>~                 |
+| desktop-environment-screenshot                  | ~<print>~                   |
+| desktop-environment-lock-screen                 | ~s-l~                       |
+
+** License
+
+See [[file:COPYING][COPYING]]. Copyright (c) 2018 Damien Cassou.
+
+  #+BEGIN_HTML
+  <a href="https://liberapay.com/DamienCassou/donate">
+    <img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg">
+  </a>
+  #+END_HTML
+
+#  LocalWords:  MPDel MPD minibuffer
