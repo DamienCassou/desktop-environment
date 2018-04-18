@@ -7,7 +7,7 @@
         </a>
 
         <a href="https://melpa.org/#/desktop-environment">
-          <img alt="MELPA Stable" src="https://melpa.org/packages/desktop-environment-badge.svg"/>
+          <img alt="MELPA" src="https://melpa.org/packages/desktop-environment-badge.svg"/>
         </a>
 
         <a href="https://gitlab.petton.fr/DamienCassou/desktop-environment/commits/master">
