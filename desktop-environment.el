@@ -45,30 +45,25 @@
 
 (defcustom desktop-environment-brightness-normal-increment "10%+"
   "Normal brightness increment value."
-  :type 'string
-  :group 'desktop-environment)
+  :type 'string)
 
 (defcustom desktop-environment-brightness-normal-decrement "10%-"
   "Normal brightness decrement value."
-  :type 'string
-  :group 'desktop-environment)
+  :type 'string)
 
 (defcustom desktop-environment-brightness-small-increment "5%+"
   "Small brightness increment value."
-  :type 'string
-  :group 'desktop-environment)
+  :type 'string)
 
 (defcustom desktop-environment-brightness-small-decrement "5%-"
   "Small brightness decrement value."
-  :type 'string
-  :group 'desktop-environment)
+  :type 'string)
 
 (defcustom desktop-environment-brightness-get-command "brightnessctl"
   "Shell command getting current screen brightness level.
 If you change this variable, you might want to change
 `desktop-environment-brightness-get-regexp' as well."
-  :type 'string
-  :group 'desktop-environment)
+  :type 'string)
 
 (defcustom desktop-environment-brightness-get-regexp "\\([0-9]+%\\)"
   "Regular expression matching brightness value.
@@ -76,45 +71,38 @@ If you change this variable, you might want to change
 This regular expression will be tested against the result of
 `desktop-environment-brightness-get-command' and group 1 must
 match the current brightness level."
-  :type 'regexp
-  :group 'desktop-environment)
+  :type 'regexp)
 
 (defcustom desktop-environment-brightness-set-command "brightnessctl set %s"
   "Shell command setting the brightness level.
 The value must contain 1 occurence of '%s' that will be
 replaced by the desired new brightness level."
-  :type 'string
-  :group 'desktop-environment)
+  :type 'string)
 
 
 ;;; Customization - volume
 
 (defcustom desktop-environment-volume-normal-increment "5%+"
   "Normal volume increment value."
-  :type 'string
-  :group 'desktop-environment)
+  :type 'string)
 
 (defcustom desktop-environment-volume-normal-decrement "5%-"
   "Normal volume decrement value."
-  :type 'string
-  :group 'desktop-environment)
+  :type 'string)
 
 (defcustom desktop-environment-volume-small-increment "1%+"
   "Small volume increment value."
-  :type 'string
-  :group 'desktop-environment)
+  :type 'string)
 
 (defcustom desktop-environment-volume-small-decrement "1%-"
   "Small volume decrement value."
-  :type 'string
-  :group 'desktop-environment)
+  :type 'string)
 
 (defcustom desktop-environment-volume-get-command "amixer get Master"
   "Shell command getting current volume level.
 If you change this variable, you might want to change
 `desktop-environment-volume-get-regexp' as well."
-  :type 'string
-  :group 'desktop-environment)
+  :type 'string)
 
 (defcustom desktop-environment-volume-get-regexp "\\([0-9]+%\\)"
   "Regular expression matching volume value.
@@ -122,54 +110,46 @@ If you change this variable, you might want to change
 This regular expression will be tested against the result of
 `desktop-environment-volume-get-command' and group 1 must
 match the current volume level."
-  :type 'regexp
-  :group 'desktop-environment)
+  :type 'regexp)
 
 (defcustom desktop-environment-volume-set-command "amixer set Master %s"
   "Shell command setting the volume level.
 The value must contain 1 occurence of '%s' that will be
 replaced by the desired new volume level."
-  :type 'string
-  :group 'desktop-environment)
+  :type 'string)
 
 (defcustom desktop-environment-volume-toggle-command "amixer set Master toggle"
   "Shell command toggling between muted and unmuted."
-  :type 'string
-  :group 'desktop-environment)
+  :type 'string)
 
 (defcustom desktop-environment-volume-toggle-microphone-command "amixer set Capture toggle"
   "Shell command toggling microphone between muted and unmuted."
-  :type 'string
-  :group 'desktop-environment)
+  :type 'string)
 
 
 ;;; Customization - screenshots
 
 (defcustom desktop-environment-screenshot-command "scrot"
   "Shell command taking a screenshot in the current working directory."
-  :type 'string
-  :group 'desktop-environment)
+  :type 'string)
 
 (defcustom desktop-environment-screenshot-partial-command "scrot -s"
   "Shell command taking a partial screenshot in the current working directory.
 
 The shell command should let the user interactively select the
 portion of the screen."
-  :type 'string
-  :group 'desktop-environment)
+  :type 'string)
 
 (defcustom desktop-environment-screenshot-directory "~/Pictures"
   "Directory where to save screenshots."
-  :type 'directory
-  :group 'desktop-environment)
+  :type 'directory)
 
 
 ;;; Customization - screen locking
 
 (defcustom desktop-environment-screenlock-command "slock"
   "Shell command locking the screen."
-  :type 'string
-  :group 'desktop-environment)
+  :type 'string)
 
 
 ;;; Helper functions - brightness
