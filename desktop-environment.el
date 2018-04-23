@@ -329,7 +329,7 @@ the screen."
        (define-key map (car keybinding) (cdr keybinding)))
      desktop-environment--keybindings)
     map)
-  "Keymap activating variable `mpdel-core-map'.")
+  "Keymap for `desktop-environment-mode'.")
 
 (declare-function exwm-input-set-key "ext:exwm-input")
 
