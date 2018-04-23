@@ -324,10 +324,8 @@ the screen."
 
 (defvar desktop-environment-mode-map
   (let ((map (make-sparse-keymap)))
-    (mapc
-     (lambda (keybinding)
-       (define-key map (car keybinding) (cdr keybinding)))
-     desktop-environment--keybindings)
+    (dolist (keybinding desktop-environment--keybindings)
+      (define-key map (car keybinding) (cdr keybinding)))
     map)
   "Keymap for `desktop-environment-mode'.")
 
@@ -336,10 +334,8 @@ the screen."
 (defun desktop-environment-exwm-set-global-keybindings ()
   "When using EXWM, add `desktop-environment-mode-map' to global keys."
   (when (featurep 'exwm-input)
-    (mapc
-     (lambda (keybinding)
-       (exwm-input-set-key (car keybinding) (cdr keybinding)))
-     desktop-environment--keybindings)))
+    (dolist (keybinding desktop-environment--keybindings)
+      (exwm-input-set-key (car keybinding) (cdr keybinding)))))
 
 ;;;###autoload
 (define-minor-mode desktop-environment-mode
