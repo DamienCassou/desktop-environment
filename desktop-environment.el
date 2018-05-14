@@ -2,7 +2,7 @@
 
 ;; Copyright (C) 2018  Damien Cassou
 
-;; Author: Damien Cassou <damien@cassou.me>
+;; Author: Damien Cassou <damien@cassou.me>, Nicolas Petton <nicolas@petton.fr>
 ;; Url: https://gitlab.petton.fr/DamienCassou/desktop-environment
 ;; Package-requires: ((emacs "25.1"))
 ;; Version: 0.2.0
