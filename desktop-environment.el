@@ -324,7 +324,8 @@ the screen."
   :global t
   :require 'desktop-environment
   :lighter " DE"
-  (desktop-environment-exwm-set-global-keybindings))
+  (when desktop-environment-mode
+    (desktop-environment-exwm-set-global-keybindings)))
 
 (provide 'desktop-environment)
 ;;; desktop-environment.el ends here
