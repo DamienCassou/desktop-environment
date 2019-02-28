@@ -314,8 +314,9 @@ the screen."
 (defun desktop-environment-exwm-set-global-keybindings ()
   "When using EXWM, add `desktop-environment-mode-map' to global keys."
   (when (featurep 'exwm-input)
-    (dolist (keybinding desktop-environment--keybindings)
-      (exwm-input-set-key (car keybinding) (cdr keybinding)))))
+    (map-keymap (lambda (event definition)
+                  (exwm-input-set-key (vector event) definition))
+                desktop-environment-mode-map)))
 
 ;;;###autoload
 (define-minor-mode desktop-environment-mode
