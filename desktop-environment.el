@@ -282,28 +282,26 @@ the screen."
 
 ;;; Minor mode
 
-(defconst desktop-environment--keybindings
-  `(;; Brightness
-    (,(kbd "<XF86MonBrightnessUp>") . ,(function desktop-environment-brightness-increment))
-    (,(kbd "<XF86MonBrightnessDown>") . ,(function desktop-environment-brightness-decrement))
-    (,(kbd "S-<XF86MonBrightnessUp>") . ,(function desktop-environment-brightness-increment-slowly))
-    (,(kbd "S-<XF86MonBrightnessDown>") . ,(function desktop-environment-brightness-decrement-slowly))
-    ;; Volume
-    (,(kbd "<XF86AudioRaiseVolume>") . ,(function desktop-environment-volume-increment))
-    (,(kbd "<XF86AudioLowerVolume>") . ,(function desktop-environment-volume-decrement))
-    (,(kbd "S-<XF86AudioRaiseVolume>") . ,(function desktop-environment-volume-increment-slowly))
-    (,(kbd "S-<XF86AudioLowerVolume>") . ,(function desktop-environment-volume-decrement-slowly))
-    (,(kbd "<XF86AudioMute>") . ,(function desktop-environment-toggle-mute))
-    (,(kbd "<XF86AudioMicMute>") . ,(function desktop-environment-toggle-microphone-mute))
-    ;; Volume
-    (,(kbd "S-<print>") . ,(function desktop-environment-screenshot-part))
-    (,(kbd "<print>") . ,(function desktop-environment-screenshot))
-    ;; Screen locking
-    (,(kbd "s-l") . ,(function desktop-environment-lock-screen)))
-  "List of (KEY . FUNCTION) in `desktop-environment-mode-map'.")
-
 (defvar desktop-environment-mode-map
-  (let ((map (make-sparse-keymap)))
+  (let ((desktop-environment--keybindings
+         `(;; Brightness
+           (,(kbd "<XF86MonBrightnessUp>") . ,(function desktop-environment-brightness-increment))
+           (,(kbd "<XF86MonBrightnessDown>") . ,(function desktop-environment-brightness-decrement))
+           (,(kbd "S-<XF86MonBrightnessUp>") . ,(function desktop-environment-brightness-increment-slowly))
+           (,(kbd "S-<XF86MonBrightnessDown>") . ,(function desktop-environment-brightness-decrement-slowly))
+           ;; Volume
+           (,(kbd "<XF86AudioRaiseVolume>") . ,(function desktop-environment-volume-increment))
+           (,(kbd "<XF86AudioLowerVolume>") . ,(function desktop-environment-volume-decrement))
+           (,(kbd "S-<XF86AudioRaiseVolume>") . ,(function desktop-environment-volume-increment-slowly))
+           (,(kbd "S-<XF86AudioLowerVolume>") . ,(function desktop-environment-volume-decrement-slowly))
+           (,(kbd "<XF86AudioMute>") . ,(function desktop-environment-toggle-mute))
+           (,(kbd "<XF86AudioMicMute>") . ,(function desktop-environment-toggle-microphone-mute))
+           ;; Volume
+           (,(kbd "S-<print>") . ,(function desktop-environment-screenshot-part))
+           (,(kbd "<print>") . ,(function desktop-environment-screenshot))
+           ;; Screen locking
+           (,(kbd "s-l") . ,(function desktop-environment-lock-screen))))
+        (map (make-sparse-keymap)))
     (dolist (keybinding desktop-environment--keybindings)
       (define-key map (car keybinding) (cdr keybinding)))
     map)
