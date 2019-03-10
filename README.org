@@ -68,6 +68,14 @@ keybinding if ~desktop-environment-mode~ is enabled:
 | desktop-environment-screenshot                  | ~<print>~                   |
 | desktop-environment-lock-screen                 | ~s-l~                       |
 
+** Dependencies
+To use every commands desktop-environment provides, the following packages must
+be available on your system:
+    - Volume: [[https://www.alsa-project.org/wiki/Main_Page][amixer]]
+    - Brightness: [[https://github.com/Hummer12007/brightnessctl][brightnessctl]]
+    - Screenshot: [[https://tracker.debian.org/pkg/scrot][scrot]]
+    - Screenlock: [[https://tools.suckless.org/slock/][slock]]
+
 ** License
 
 See [[file:COPYING][COPYING]]. Copyright (c) 2018 Damien Cassou.
