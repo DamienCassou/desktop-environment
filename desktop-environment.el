@@ -36,9 +36,21 @@
 
 ;;; Code:
 
+(require 'dbus)
+
 (defgroup desktop-environment nil
   "Configure desktop-environment."
   :group 'environment)
+
+
+;;; Customization - keyboard backlight
+(defcustom desktop-environment-keyboard-backlight-normal-increment 1
+  "Normal keyboard increment value."
+  :type 'integer)
+
+(defcustom desktop-environment-keyboard-backlight-normal-decrement -1
+  "Normal keyboard decrement value."
+  :type 'integer)
 
 
 ;;; Customization - brightness
@@ -182,6 +194,44 @@ portion of the screen."
   (message "New volume value: %s" (desktop-environment-volume-get)))
 
 
+;;; Helper functions - keyboard backlight
+(defun desktop-environment-keyboard-backlight-percent ()
+  "Return the new keyboard backlight value as a % of maximum backlight."
+  (let ((backlight-level (desktop-environment-keyboard-backlight-get)))
+    (if (eq backlight-level 0)
+        "0.0"
+      (*
+       (/ (* backlight-level 1.0)
+          (* (desktop-environment-keyboard-backlight-get-max) 1.0))
+       100))))
+
+(defun desktop-environment-keyboard-backlight-get ()
+  "Return a number representing keyboard backlight current level."
+  (dbus-call-method :system
+                    "org.freedesktop.UPower"
+                    "/org/freedesktop/UPower/KbdBacklight"
+                    "org.freedesktop.UPower.KbdBacklight"
+                    "GetBrightness"))
+
+(defun desktop-environment-keyboard-backlight-get-max ()
+  "Return a number representing keyboard backlight maximum level."
+  (dbus-call-method :system
+                    "org.freedesktop.UPower"
+                    "/org/freedesktop/UPower/KbdBacklight"
+                    "org.freedesktop.UPower.KbdBacklight"
+                    "GetMaxBrightness"))
+
+(defun desktop-environment-keyboard-backlight-set (value)
+  "Set keyboard backlight to VALUE."
+  (dbus-call-method :system
+                    "org.freedesktop.UPower"
+                    "/org/freedesktop/UPower/KbdBacklight"
+                    "org.freedesktop.UPower.KbdBacklight"
+                    "SetBrightness"
+                    :int32 value)
+  (message "New keyboard value: %s%%" (desktop-environment-keyboard-backlight-percent)))
+
+
 ;;; Commands - brightness
 
 ;;;###autoload
@@ -248,6 +298,23 @@ portion of the screen."
   (interactive)
   (message "%s"
            (shell-command-to-string desktop-environment-volume-toggle-microphone-command)))
+
+
+;;; Commands - keyboard backlight
+;;;###autoload
+(defun desktop-environment-keyboard-backlight-increment ()
+  "Increment keyboard backlight by `desktop-environment-keyboard-backlight-normal-increment'."
+  (interactive)
+  (desktop-environment-keyboard-backlight-set
+   (+ desktop-environment-keyboard-backlight-normal-increment
+      (desktop-environment-keyboard-backlight-get))))
+
+(defun desktop-environment-keyboard-backlight-decrement ()
+  "Decrement keyboard backlight by `desktop-environment-keyboard-backlight-normal-decrement'."
+  (interactive)
+  (desktop-environment-keyboard-backlight-set
+   (+ desktop-environment-keyboard-backlight-normal-decrement
+      (desktop-environment-keyboard-backlight-get))))
 
 
 ;;; Commands - screenshots
