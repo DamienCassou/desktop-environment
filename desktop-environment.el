@@ -344,7 +344,8 @@ the screen."
 (defun desktop-environment-lock-screen ()
   "Lock the screen, preventing anyone without a password from using the system."
   (interactive)
-  (shell-command-to-string desktop-environment-screenlock-command))
+  ;; Run command asynchronously so that Emacs does not wait in the background.
+  (async-shell-command desktop-environment-screenlock-command))
 
 
 ;;; Minor mode
