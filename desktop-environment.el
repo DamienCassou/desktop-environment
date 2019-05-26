@@ -345,7 +345,8 @@ the screen."
   "Lock the screen, preventing anyone without a password from using the system."
   (interactive)
   ;; Run command asynchronously so that Emacs does not wait in the background.
-  (async-shell-command desktop-environment-screenlock-command))
+  (let ((async-shell-command-buffer 'new-buffer))
+    (async-shell-command desktop-environment-screenlock-command)))
 
 
 ;;; Minor mode
