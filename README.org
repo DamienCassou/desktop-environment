@@ -67,6 +67,8 @@ keybinding if ~desktop-environment-mode~ is enabled:
 | desktop-environment-screenshot-part             | ~S-<print>~                 |
 | desktop-environment-screenshot                  | ~<print>~                   |
 | desktop-environment-lock-screen                 | ~s-l~                       |
+| desktop-environment-toggle-wifi                 | ~<XF86WLAN>~                |
+| desktop-environment-toggle-bluetooth            | ~<XF86Bluetooth>~           |
 
 ** Dependencies
 To use every commands desktop-environment provides, the following packages must
@@ -76,6 +78,7 @@ be available on your system:
     - Screenshot: [[https://tracker.debian.org/pkg/scrot][scrot]]
     - Screenlock: [[https://tools.suckless.org/slock/][slock]]
     - Keyboard backlight: [[https://upower.freedesktop.org/][upower]]
+    - Wifi and bluetooth: [[https://linrunner.de/en/tlp/tlp.html][TLP]]
 
 ** License
 
