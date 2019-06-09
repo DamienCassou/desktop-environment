@@ -164,6 +164,18 @@ portion of the screen."
   :type 'string)
 
 
+;;; Customization - wifi
+
+(defcustom desktop-environment-wifi-command "wifi toggle"
+  "Shell command toggling wifi."
+  :type 'string)
+
+;;; Customization - bluetooth
+
+(defcustom desktop-environment-bluetooth-command "bluetooth toggle"
+  "Shell command toggling bluetooth."
+  :type 'string)
+
 ;;; Helper functions - brightness
 
 (defun desktop-environment-brightness-get ()
@@ -349,6 +361,24 @@ the screen."
     (async-shell-command desktop-environment-screenlock-command)))
 
 
+;;; Commands - wifi
+
+;;;###autoload
+(defun desktop-environment-toggle-wifi ()
+  "Toggle wifi adapter on and off."
+  (interactive)
+  (let ((async-shell-command-buffer 'new-buffer))
+    (async-shell-command desktop-environment-wifi-command)))
+
+;;; Commands - bluetooth
+
+;;;###autoload
+(defun desktop-environment-toggle-bluetooth ()
+  "Toggle bluetooth on and off."
+  (interactive)
+  (let ((async-shell-command-buffer 'new-buffer))
+    (async-shell-command desktop-environment-bluetooth-command)))
+  
 ;;; Minor mode
 
 (defvar desktop-environment-mode-map
@@ -369,7 +399,11 @@ the screen."
            (,(kbd "S-<print>") . ,(function desktop-environment-screenshot-part))
            (,(kbd "<print>") . ,(function desktop-environment-screenshot))
            ;; Screen locking
-           (,(kbd "s-l") . ,(function desktop-environment-lock-screen))))
+           (,(kbd "s-l") . ,(function desktop-environment-lock-screen))
+           ;; Wifi controls
+           (,(kbd "<XF86WLAN>") . ,(function desktop-enviroment-toggle-wifi))
+           ;; Bluetooth controls
+           (,(kbd "<XF86Bluetooth>") . ,(function desktop-enviroment-toggle-bluetooth))))
         (map (make-sparse-keymap)))
     (dolist (keybinding desktop-environment--keybindings)
       (define-key map (car keybinding) (cdr keybinding)))
