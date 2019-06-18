@@ -164,6 +164,23 @@ portion of the screen."
   :type 'string)
 
 
+
+;;; Customization - keyboard layout
+
+(defcustom desktop-environment-keyboard-layouts '("us" "us -variant dvorak" "cz")
+  "List of layouts to toggle between with.
+
+This is prepended by \"setxkbmap -layout\".
+The elements of this list must be valid xkb keymaps.
+List of all valid keymaps: \"man xkeyboard-config\""
+  :type '(repeat string)
+  :set (lambda (sym defs)
+         (custom-set-default sym defs)
+         (let ((ring (make-ring (length desktop-environment-keyboard-layouts))))
+           (mapc (lambda (element) (ring-insert ring element)) desktop-environment-keyboard-layouts)
+           (setq desktop-environment-keyboard-layouts-ring ring))))
+
+
 ;;; Customization - wifi
 
 (defcustom desktop-environment-wifi-command "wifi toggle"
@@ -175,6 +192,17 @@ portion of the screen."
 (defcustom desktop-environment-bluetooth-command "bluetooth toggle"
   "Shell command toggling bluetooth."
   :type 'string)
+
+
+;;; Helper variables - keyboard layout
+
+(defvar desktop-environment-keyboard-layouts-ring []
+  "Varible for storing whole commands for setxkbmap.
+Do not edit this by hand! Use desktop-environment-keyboard-layouts variable instead.")
+
+(defvar desktop-environment-current-keyboard-layout-index -1
+  "Stores current keyboard layout index.")
+
 
 ;;; Helper functions - brightness
 
@@ -361,6 +389,27 @@ the screen."
     (async-shell-command desktop-environment-screenlock-command)))
 
 
+
+;;; Commands - keyboard layout
+
+;;;###autoload
+(defun desktop-environment-keyboard-layout-cycle-forward ()
+  "Cycle in desktop-environment-keyboard-layouts-ring by one forward."
+  (interactive)
+  ;; Cycle the layout ring by adding one to index. (modulo is done by ring-ref)
+  (setq desktop-environment-current-keyboard-layout-index (1+ desktop-environment-current-keyboard-layout-index))
+  (let ((async-shell-command-buffer 'new-buffer) (current-layout (ring-ref desktop-environment-keyboard-layouts-ring desktop-environment-current-keyboard-layout-index)))
+    (async-shell-command (concat "setxkbmap -layout " current-layout))))
+
+;;;###autoload
+(defun desktop-environment-keyboard-layout-cycle-backward ()
+  "Cycle in desktop-environment-keyboard-layouts-ring by one backward."
+  (interactive)
+  ;; Cycle the layout ring by removing one from index.
+  (setq desktop-environment-current-keyboard-layout-index (1- desktop-environment-current-keyboard-layout-index))
+  (let ((async-shell-command-buffer 'new-buffer) (current-layout (ring-ref desktop-environment-keyboard-layouts-ring desktop-environment-current-keyboard-layout-index)))
+    (async-shell-command (concat "setxkbmap -layout " current-layout))))
+
 ;;; Commands - wifi
 
 ;;;###autoload
@@ -400,6 +449,9 @@ the screen."
            (,(kbd "<print>") . ,(function desktop-environment-screenshot))
            ;; Screen locking
            (,(kbd "s-l") . ,(function desktop-environment-lock-screen))
+           ;; Keyboard layouts
+           (,(kbd "s-SPC") . ,(function desktop-environment-keyboard-layout-cycle-forward))
+           (,(kbd "s-S-SPC") . ,(function desktop-environment-keyboard-layout-cycle-backward))
            ;; Wifi controls
            (,(kbd "<XF86WLAN>") . ,(function desktop-environment-toggle-wifi))
            ;; Bluetooth controls
