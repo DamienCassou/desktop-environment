@@ -116,6 +116,21 @@ customize-group RET desktop-environment RET~ to change them.
 | ~desktop-environment-wifi-command~                        | Shell command toggling wifi                                                |
 | ~desktop-environment-bluetooth-command~                   | Shell command toggling bluetooth                                           |
 
+**** Using light instead of brightnessctl
+
+You might prefer to use [[https://haikarainen.github.io/light/][light]] instead of [[https://github.com/Hummer12007/brightnessctl][brightnessctl]]. This can be
+done by adding the following to your configuration file:
+
+#+begin_src emacs-lisp
+  (setq desktop-environment-brightness-get-command "light")
+  (setq desktop-environment-brightness-set-command "light %s")
+  (setq desktop-environment-brightness-get-regexp "^\\([0-9]+\\)")
+  (setq desktop-environment-brightness-normal-increment "-A 10")
+  (setq desktop-environment-brightness-normal-decrement "-U 10")
+  (setq desktop-environment-brightness-small-increment "-A 5")
+  (setq desktop-environment-brightness-small-decrement "-U 5")
+#+end_src
+
 ** License
 
 See [[file:COPYING][COPYING]]. Copyright (c) 2018 Damien Cassou.
