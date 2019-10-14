@@ -70,15 +70,51 @@ keybinding if ~desktop-environment-mode~ is enabled:
 | desktop-environment-toggle-wifi                 | ~<XF86WLAN>~                |
 | desktop-environment-toggle-bluetooth            | ~<XF86Bluetooth>~           |
 
-** Dependencies
-To use every commands desktop-environment provides, the following packages must
-be available on your system:
-    - Volume: [[https://www.alsa-project.org/wiki/Main_Page][amixer]]
-    - Brightness: [[https://github.com/Hummer12007/brightnessctl][brightnessctl]]
-    - Screenshot: [[https://tracker.debian.org/pkg/scrot][scrot]]
-    - Screenlock: [[https://tools.suckless.org/slock/][slock]]
-    - Keyboard backlight: [[https://upower.freedesktop.org/][upower]]
-    - Wifi and bluetooth: [[https://linrunner.de/en/tlp/tlp.html][TLP]]
+** Configuration
+
+*** Default configuration
+
+To use all commands desktop-environment provides without customizing
+the package, the following system packages must be available on your system:
+
+- Volume: [[https://www.alsa-project.org/wiki/Main_Page][amixer]]
+- Brightness: [[https://github.com/Hummer12007/brightnessctl][brightnessctl]]
+- Screenshot: [[https://tracker.debian.org/pkg/scrot][scrot]]
+- Screenlock: [[https://tools.suckless.org/slock/][slock]]
+- Keyboard backlight: [[https://upower.freedesktop.org/][upower]]
+- Wifi and bluetooth: [[https://linrunner.de/en/tlp/tlp.html][TLP]]
+
+*** Configuring desktop-environment
+
+The table below summarizes the available options. You can use ~M-x
+customize-group RET desktop-environment RET~ to change them.
+
+| *Option*                                                  | *Description*                                                              |
+|-----------------------------------------------------------+----------------------------------------------------------------------------|
+| ~desktop-environment-keyboard-backlight-normal-increment~ | Normal keyboard increment value                                            |
+| ~desktop-environment-keyboard-backlight-normal-decrement~ | Normal keyboard decrement value                                            |
+| ~desktop-environment-brightness-normal-increment~         | Normal brightness increment value                                          |
+| ~desktop-environment-brightness-normal-decrement~         | Normal brightness decrement value                                          |
+| ~desktop-environment-brightness-small-increment~          | Small brightness increment value                                           |
+| ~desktop-environment-brightness-small-decrement~          | Small brightness decrement value                                           |
+| ~desktop-environment-brightness-get-command~              | Shell command getting current screen brightness level                      |
+| ~desktop-environment-brightness-get-regexp~               | Regular expression matching brightness value                               |
+| ~desktop-environment-brightness-set-command~              | Shell command setting the brightness level                                 |
+| ~desktop-environment-volume-normal-increment~             | Normal volume increment value                                              |
+| ~desktop-environment-volume-normal-decrement~             | Normal volume decrement value                                              |
+| ~desktop-environment-volume-small-increment~              | Small volume increment value                                               |
+| ~desktop-environment-volume-small-decrement~              | Small volume decrement value                                               |
+| ~desktop-environment-volume-get-command~                  | Shell command getting current volume level                                 |
+| ~desktop-environment-volume-get-regexp~                   | Regular expression matching volume value                                   |
+| ~desktop-environment-volume-set-command~                  | Shell command setting the volume level                                     |
+| ~desktop-environment-volume-toggle-command~               | Shell command toggling between muted and unmuted                           |
+| ~desktop-environment-volume-toggle-microphone-command~    | Shell command toggling microphone between muted and unmuted                |
+| ~desktop-environment-screenshot-command~                  | Shell command taking a screenshot in the current working directory         |
+| ~desktop-environment-screenshot-partial-command~          | Shell command taking a partial screenshot in the current working directory |
+| ~desktop-environment-screenshot-directory~                | Directory where to save screenshots                                        |
+| ~desktop-environment-screenlock-command~                  | Shell command locking the screen                                           |
+| ~desktop-environment-wifi-command~                        | Shell command toggling wifi                                                |
+| ~desktop-environment-bluetooth-command~                   | Shell command toggling bluetooth                                           |
 
 ** License
 
