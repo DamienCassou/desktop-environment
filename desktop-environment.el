@@ -87,7 +87,7 @@ match the current brightness level."
 
 (defcustom desktop-environment-brightness-set-command "brightnessctl set %s"
   "Shell command setting the brightness level.
-The value must contain 1 occurence of '%s' that will be
+The value must contain 1 occurrence of '%s' that will be
 replaced by the desired new brightness level."
   :type 'string)
 
@@ -126,7 +126,7 @@ match the current volume level."
 
 (defcustom desktop-environment-volume-set-command "amixer set Master %s"
   "Shell command setting the volume level.
-The value must contain 1 occurence of '%s' that will be
+The value must contain 1 occurrence of '%s' that will be
 replaced by the desired new volume level."
   :type 'string)
 
