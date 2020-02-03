@@ -131,6 +131,22 @@ done by adding the following to your configuration file:
   (setq desktop-environment-brightness-small-decrement "-U 5")
 #+end_src
 
+**** EXWM Compatibility
+
+The customizable variable ~desktop-environment-update-exwm-global-keys~ can be
+used to control how key bindings should be handled when EXWM is loaded.
+
+If set to ~:global~ (the default), the key bindings will be set via
+`exwm-input-set-key`.  This ensures that these are global bindings which work
+regardless of char-mode or line-mode.
+
+When predominantly working with line mode, however, it may make sense to set it
+to the value ~:prefix~ instead.  This way, EXWM knows to forward the bindings to
+the minor mode map in line mode.  This way, when disabling
+~desktop-environment-mode~, the bindings are deactivated again.
+
+Set to ~nil~ to disable any kind of special behavior in the presence of EXWM.
+
 ** License
 
 See [[file:COPYING][COPYING]]. Copyright (c) 2018 Damien Cassou.

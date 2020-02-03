@@ -176,6 +176,16 @@ portion of the screen."
   "Shell command toggling bluetooth."
   :type 'string)
 
+
+;;; Customization - EXWM keybindings
+
+(defcustom desktop-environment-update-exwm-global-keys :global
+  "Determines interacting with EXWM bindings when enabling/disabling the mode."
+  :type '(radio
+          (const :tag "Global" :doc "Use `exwm-input-set-key' on mode activation to set bindings." :global)
+          (const :tag "Prefix" :doc "Add/Remove keys to `exwm-input-prefix-keys' when enabling/disabling the mode." :prefix)
+          (const :tag "Off" :doc "Do not touch EXWM key bindings." nil)))
+
 ;;; Helper functions - brightness
 
 (defun desktop-environment-brightness-get ()
@@ -411,12 +421,32 @@ the screen."
 
 (declare-function exwm-input-set-key "ext:exwm-input")
 
-(defun desktop-environment-exwm-set-global-keybindings ()
-  "When using EXWM, add `desktop-environment-mode-map' to global keys."
+(defun desktop-environment-exwm-set-global-keybindings (enable)
+  "When using EXWM, add `desktop-environment-mode-map' to global keys.
+
+When ENABLE is non-nil, the bindings will be installed depending
+on the value of `desktop-environment-update-exwm-global-keys'.
+If set to `:prefix', the bindings will be disabled when ENABLE is
+nil."
   (when (featurep 'exwm-input)
-    (map-keymap (lambda (event definition)
-                  (exwm-input-set-key (vector event) definition))
-                desktop-environment-mode-map)))
+    (cl-case desktop-environment-update-exwm-global-keys
+      (:global
+       (when enable
+         (map-keymap (lambda (event definition)
+                       (exwm-input-set-key (vector event) definition))
+                     desktop-environment-mode-map)))
+      (:prefix
+       (when (boundp 'exwm-input-prefix-keys)
+         (map-keymap (lambda (event definition)
+                       (ignore definition)
+                       (setq exwm-input-prefix-keys (if enable
+                                                        (cons event exwm-input-prefix-keys)
+                                                      (delq event exwm-input-prefix-keys))))
+                     desktop-environment-mode-map)))
+      ((nil) nil)
+      (t
+       (message "Ignoring unknown value %s for `desktop-environment-update-exwm-global-keys'"
+                desktop-environment-update-exwm-global-keys)))))
 
 ;;;###autoload
 (define-minor-mode desktop-environment-mode
@@ -426,8 +456,7 @@ the screen."
   :global t
   :require 'desktop-environment
   :lighter " DE"
-  (when desktop-environment-mode
-    (desktop-environment-exwm-set-global-keybindings)))
+  (desktop-environment-exwm-set-global-keybindings desktop-environment-mode))
 
 (provide 'desktop-environment)
 ;;; desktop-environment.el ends here
