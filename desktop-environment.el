@@ -264,7 +264,7 @@ portion of the screen."
 
 ;;;###autoload
 (defun desktop-environment-brightness-decrement ()
-  "Increment brightness by `desktop-environment-brightness-normal-decrement'."
+  "Decrement brightness by `desktop-environment-brightness-normal-decrement'."
   (interactive)
   (desktop-environment-brightness-set desktop-environment-brightness-normal-decrement))
 
@@ -291,7 +291,7 @@ portion of the screen."
 
 ;;;###autoload
 (defun desktop-environment-volume-decrement ()
-  "Increment volume by `desktop-environment-volume-normal-decrement'."
+  "Decrement volume by `desktop-environment-volume-normal-decrement'."
   (interactive)
   (desktop-environment-volume-set desktop-environment-volume-normal-decrement))
 
