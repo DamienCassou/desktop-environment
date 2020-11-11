@@ -69,6 +69,9 @@ keybinding if ~desktop-environment-mode~ is enabled:
 | desktop-environment-lock-screen                 | ~s-l~                       |
 | desktop-environment-toggle-wifi                 | ~<XF86WLAN>~                |
 | desktop-environment-toggle-bluetooth            | ~<XF86Bluetooth>~           |
+| desktop-environment-toggle-music                | ~<XF86AudioPlay>~           |
+| desktop-environment-previous-song               | ~<XF86AudioPrev>~           |
+| desktop-environment-next-song                   | ~<XF86AudioNext>~           |
 
 ** Configuration
 
@@ -83,6 +86,7 @@ the package, the following system packages must be available on your system:
 - Screenlock: [[https://tools.suckless.org/slock/][slock]]
 - Keyboard backlight: [[https://upower.freedesktop.org/][upower]]
 - Wifi and bluetooth: [[https://linrunner.de/en/tlp/tlp.html][TLP]]
+- Music: [[https://github.com/altdesktop/playerctl][playerctl]]
 
 *** Configuring desktop-environment
 
@@ -115,6 +119,9 @@ customize-group RET desktop-environment RET~ to change them.
 | ~desktop-environment-screenlock-command~                  | Shell command locking the screen                                           |
 | ~desktop-environment-wifi-command~                        | Shell command toggling wifi                                                |
 | ~desktop-environment-bluetooth-command~                   | Shell command toggling bluetooth                                           |
+| ~desktop-environment-toggle-music-command~                | Shell command toggling the music player                                    |
+| desktop-environment-previous-song-command                 | Shell command for going to previous song                                   |
+| desktop-environment-next-song-command                     | Shell command for going to next song                                       |
 
 **** Using light instead of brightnessctl
 

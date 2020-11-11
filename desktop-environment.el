@@ -177,6 +177,18 @@ portion of the screen."
   :type 'string)
 
 
+;;; Customization - music player
+
+(defcustom desktop-environment-toggle-music-command "playerctl play-pause"
+  "Shell command toggling the music player.")
+
+(defcustom desktop-environment-previous-song-command "playerctl previous"
+  "Shell command for going to previous song.")
+
+(defcustom desktop-environment-next-song-command "playerctl next"
+  "Shell command for going to next song.")
+
+
 ;;; Customization - EXWM keybindings
 
 (defcustom desktop-environment-update-exwm-global-keys :global
@@ -387,7 +399,27 @@ the screen."
   (interactive)
   (let ((async-shell-command-buffer 'new-buffer))
     (async-shell-command desktop-environment-bluetooth-command)))
-  
+
+
+;;; Commands - music player
+(defun desktop-environment-toggle-music ()
+  "Play/pause the music player"
+  (interactive)
+  (message "%s"
+           (shell-command-to-string desktop-environment-toggle-music-command)))
+
+(defun desktop-environment-previous-song ()
+  "Play the previous song"
+  (interactive)
+  (message "%s"
+           (shell-command-to-string desktop-environment-previous-song-command)))
+
+(defun desktop-environment-next-song ()
+  "Play the next song"
+  (interactive)
+  (message "%s"
+           (shell-command-to-string desktop-environment-next-song-command)))
+
 ;;; Minor mode
 
 (defvar desktop-environment-mode-map
@@ -412,7 +444,10 @@ the screen."
            ;; Wifi controls
            (,(kbd "<XF86WLAN>") . ,(function desktop-environment-toggle-wifi))
            ;; Bluetooth controls
-           (,(kbd "<XF86Bluetooth>") . ,(function desktop-environment-toggle-bluetooth))))
+           (,(kbd "<XF86Bluetooth>") . ,(function desktop-environment-toggle-bluetooth))
+           (,(kbd "<XF86AudioPlay>") . ,(function desktop-environment-toggle-music))
+           (,(kbd "<XF86AudioNext>") . ,(function desktop-environment-next-song))
+           (,(kbd "<XF86AudioPrev>") . ,(function desktop-environment-previous-song))))
         (map (make-sparse-keymap)))
     (dolist (keybinding desktop-environment--keybindings)
       (define-key map (car keybinding) (cdr keybinding)))
