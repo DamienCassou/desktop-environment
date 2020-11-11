@@ -177,6 +177,21 @@ portion of the screen."
   :type 'string)
 
 
+;;; Customization - music
+
+(defcustom desktop-environment-music-toggle-command "playerctl play-pause"
+  "Shell command toggling the music player."
+  :type 'string)
+
+(defcustom desktop-environment-music-previous-command "playerctl previous"
+  "Shell command for going to previous song."
+  :type 'string)
+
+(defcustom desktop-environment-music-next-command "playerctl next"
+  "Shell command for going to next song."
+  :type 'string)
+
+
 ;;; Customization - EXWM keybindings
 
 (defcustom desktop-environment-update-exwm-global-keys :global
@@ -387,7 +402,28 @@ the screen."
   (interactive)
   (let ((async-shell-command-buffer 'new-buffer))
     (async-shell-command desktop-environment-bluetooth-command)))
-  
+
+
+;;; Commands - music
+
+(defun desktop-environment-toggle-music ()
+  "Play/pause the music player."
+  (interactive)
+  (message "%s"
+           (shell-command-to-string desktop-environment-music-toggle-command)))
+
+(defun desktop-environment-music-previous ()
+  "Play the previous song."
+  (interactive)
+  (message "%s"
+           (shell-command-to-string desktop-environment-music-previous-command)))
+
+(defun desktop-environment-music-next()
+  "Play the next song."
+  (interactive)
+  (message "%s"
+           (shell-command-to-string desktop-environment-music-next-command)))
+
 ;;; Minor mode
 
 (defvar desktop-environment-mode-map
@@ -412,7 +448,11 @@ the screen."
            ;; Wifi controls
            (,(kbd "<XF86WLAN>") . ,(function desktop-environment-toggle-wifi))
            ;; Bluetooth controls
-           (,(kbd "<XF86Bluetooth>") . ,(function desktop-environment-toggle-bluetooth))))
+           (,(kbd "<XF86Bluetooth>") . ,(function desktop-environment-toggle-bluetooth))
+           ;; Music controls
+           (,(kbd "<XF86AudioPlay>") . ,(function desktop-environment-toggle-music))
+           (,(kbd "<XF86AudioPrev>") . ,(function desktop-environment-music-previous))
+           (,(kbd "<XF86AudioNext>") . ,(function desktop-environment-music-next))))
         (map (make-sparse-keymap)))
     (dolist (keybinding desktop-environment--keybindings)
       (define-key map (car keybinding) (cdr keybinding)))
