@@ -180,13 +180,16 @@ portion of the screen."
 ;;; Customization - music player
 
 (defcustom desktop-environment-toggle-music-command "playerctl play-pause"
-  "Shell command toggling the music player.")
+  "Shell command toggling the music player."
+  :type 'string)
 
 (defcustom desktop-environment-previous-song-command "playerctl previous"
-  "Shell command for going to previous song.")
+  "Shell command for going to previous song."
+  :type 'string)
 
 (defcustom desktop-environment-next-song-command "playerctl next"
-  "Shell command for going to next song.")
+  "Shell command for going to next song."
+  :type 'string)
 
 
 ;;; Customization - EXWM keybindings
