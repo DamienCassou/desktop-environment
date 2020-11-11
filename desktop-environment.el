@@ -403,19 +403,19 @@ the screen."
 
 ;;; Commands - music player
 (defun desktop-environment-toggle-music ()
-  "Play/pause the music player"
+  "Play/pause the music player."
   (interactive)
   (message "%s"
            (shell-command-to-string desktop-environment-toggle-music-command)))
 
 (defun desktop-environment-previous-song ()
-  "Play the previous song"
+  "Play the previous song."
   (interactive)
   (message "%s"
            (shell-command-to-string desktop-environment-previous-song-command)))
 
 (defun desktop-environment-next-song ()
-  "Play the next song"
+  "Play the next song."
   (interactive)
   (message "%s"
            (shell-command-to-string desktop-environment-next-song-command)))
