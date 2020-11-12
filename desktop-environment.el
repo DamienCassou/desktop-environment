@@ -177,17 +177,17 @@ portion of the screen."
   :type 'string)
 
 
-;;; Customization - music player
+;;; Customization - music
 
-(defcustom desktop-environment-toggle-music-command "playerctl play-pause"
+(defcustom desktop-environment-music-toggle-command "playerctl play-pause"
   "Shell command toggling the music player."
   :type 'string)
 
-(defcustom desktop-environment-previous-song-command "playerctl previous"
+(defcustom desktop-environment-music-previous-command "playerctl previous"
   "Shell command for going to previous song."
   :type 'string)
 
-(defcustom desktop-environment-next-song-command "playerctl next"
+(defcustom desktop-environment-music-next-command "playerctl next"
   "Shell command for going to next song."
   :type 'string)
 
@@ -404,24 +404,25 @@ the screen."
     (async-shell-command desktop-environment-bluetooth-command)))
 
 
-;;; Commands - music player
+;;; Commands - music
+
 (defun desktop-environment-toggle-music ()
   "Play/pause the music player."
   (interactive)
   (message "%s"
-           (shell-command-to-string desktop-environment-toggle-music-command)))
+           (shell-command-to-string desktop-environment-music-toggle-command)))
 
-(defun desktop-environment-previous-song ()
+(defun desktop-environment-music-previous ()
   "Play the previous song."
   (interactive)
   (message "%s"
-           (shell-command-to-string desktop-environment-previous-song-command)))
+           (shell-command-to-string desktop-environment-music-previous-command)))
 
-(defun desktop-environment-next-song ()
+(defun desktop-environment-music-next()
   "Play the next song."
   (interactive)
   (message "%s"
-           (shell-command-to-string desktop-environment-next-song-command)))
+           (shell-command-to-string desktop-environment-music-next-command)))
 
 ;;; Minor mode
 
@@ -448,9 +449,10 @@ the screen."
            (,(kbd "<XF86WLAN>") . ,(function desktop-environment-toggle-wifi))
            ;; Bluetooth controls
            (,(kbd "<XF86Bluetooth>") . ,(function desktop-environment-toggle-bluetooth))
+           ;; Music controls
            (,(kbd "<XF86AudioPlay>") . ,(function desktop-environment-toggle-music))
-           (,(kbd "<XF86AudioNext>") . ,(function desktop-environment-next-song))
-           (,(kbd "<XF86AudioPrev>") . ,(function desktop-environment-previous-song))))
+           (,(kbd "<XF86AudioPrev>") . ,(function desktop-environment-music-previous))
+           (,(kbd "<XF86AudioNext>") . ,(function desktop-environment-music-next))))
         (map (make-sparse-keymap)))
     (dolist (keybinding desktop-environment--keybindings)
       (define-key map (car keybinding) (cdr keybinding)))
