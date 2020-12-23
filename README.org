@@ -66,7 +66,7 @@ keybinding if ~desktop-environment-mode~ is enabled:
 | desktop-environment-toggle-microphone-mute      | ~<XF86AudioMicMute>~        |
 | desktop-environment-screenshot-part             | ~S-<print>~                 |
 | desktop-environment-screenshot                  | ~<print>~                   |
-| desktop-environment-lock-screen                 | ~s-l~                       |
+| desktop-environment-lock-screen                 | ~s-l~ or ~<XF86ScreenSaver>~  |
 | desktop-environment-toggle-wifi                 | ~<XF86WLAN>~                |
 | desktop-environment-toggle-bluetooth            | ~<XF86Bluetooth>~           |
 | desktop-environment-toggle-music                | ~<XF86AudioPlay>~           |

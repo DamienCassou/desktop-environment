@@ -445,6 +445,7 @@ the screen."
            (,(kbd "<print>") . ,(function desktop-environment-screenshot))
            ;; Screen locking
            (,(kbd "s-l") . ,(function desktop-environment-lock-screen))
+           (,(kbd "<XF86ScreenSaver>") . ,(function desktop-environment-lock-screen))
            ;; Wifi controls
            (,(kbd "<XF86WLAN>") . ,(function desktop-environment-toggle-wifi))
            ;; Bluetooth controls
