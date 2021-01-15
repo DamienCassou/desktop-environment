@@ -201,18 +201,25 @@ portion of the screen."
           (const :tag "Prefix" :doc "Add/Remove keys to `exwm-input-prefix-keys' when enabling/disabling the mode." :prefix)
           (const :tag "Off" :doc "Do not touch EXWM key bindings." nil)))
 
+;;; Helper functions - desktop-environment--shell-command-to-string
+
+(defun desktop-environment--shell-command-to-string (command)
+  "Execute shell command COMMAND locally and return its output as a string."
+   (let ((default-directory temporary-file-directory))
+      (shell-command-to-string command)))
+
 ;;; Helper functions - brightness
 
 (defun desktop-environment-brightness-get ()
   "Return a string representing current brightness level."
-  (let ((output (shell-command-to-string desktop-environment-brightness-get-command)))
+  (let ((output (desktop-environment--shell-command-to-string desktop-environment-brightness-get-command)))
     (save-match-data
       (string-match desktop-environment-brightness-get-regexp output)
       (match-string 1 output))))
 
 (defun desktop-environment-brightness-set (value)
   "Set brightness to VALUE."
-  (shell-command-to-string (format desktop-environment-brightness-set-command value))
+  (desktop-environment--shell-command-to-string (format desktop-environment-brightness-set-command value))
   (message "New brightness value: %s" (desktop-environment-brightness-get)))
 
 
@@ -220,14 +227,14 @@ portion of the screen."
 
 (defun desktop-environment-volume-get ()
   "Return a string representing current volume level."
-  (let ((output (shell-command-to-string desktop-environment-volume-get-command)))
+  (let ((output (desktop-environment--shell-command-to-string desktop-environment-volume-get-command)))
     (save-match-data
       (string-match desktop-environment-volume-get-regexp output)
       (match-string 1 output))))
 
 (defun desktop-environment-volume-set (value)
   "Set volume to VALUE."
-  (shell-command-to-string (format desktop-environment-volume-set-command value))
+  (desktop-environment--shell-command-to-string (format desktop-environment-volume-set-command value))
   (message "New volume value: %s" (desktop-environment-volume-get)))
 
 
@@ -327,14 +334,14 @@ portion of the screen."
   "Toggle between muted and un-muted."
   (interactive)
   (message "%s"
-           (shell-command-to-string desktop-environment-volume-toggle-command)))
+           (desktop-environment--shell-command-to-string desktop-environment-volume-toggle-command)))
 
 ;;;###autoload
 (defun desktop-environment-toggle-microphone-mute ()
   "Toggle microphone between muted and un-muted."
   (interactive)
   (message "%s"
-           (shell-command-to-string desktop-environment-volume-toggle-microphone-command)))
+           (desktop-environment--shell-command-to-string desktop-environment-volume-toggle-microphone-command)))
 
 
 ;;; Commands - keyboard backlight
@@ -410,19 +417,19 @@ the screen."
   "Play/pause the music player."
   (interactive)
   (message "%s"
-           (shell-command-to-string desktop-environment-music-toggle-command)))
+           (desktop-environment--shell-command-to-string desktop-environment-music-toggle-command)))
 
 (defun desktop-environment-music-previous ()
   "Play the previous song."
   (interactive)
   (message "%s"
-           (shell-command-to-string desktop-environment-music-previous-command)))
+           (desktop-environment--shell-command-to-string desktop-environment-music-previous-command)))
 
 (defun desktop-environment-music-next()
   "Play the next song."
   (interactive)
   (message "%s"
-           (shell-command-to-string desktop-environment-music-next-command)))
+           (desktop-environment--shell-command-to-string desktop-environment-music-next-command)))
 
 ;;; Minor mode
 
