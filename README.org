@@ -52,26 +52,26 @@ ones above:
 The following table summarizes the available commands and their
 keybinding if ~desktop-environment-mode~ is enabled:
 
-| *Command*                                       | *Key binding*               |
-|-------------------------------------------------+-----------------------------|
-| desktop-environment-brightness-increment        | ~<XF86MonBrightnessUp>~     |
-| desktop-environment-brightness-decrement        | ~<XF86MonBrightnessDown>~   |
-| desktop-environment-brightness-increment-slowly | ~S-<XF86MonBrightnessUp>~   |
-| desktop-environment-brightness-decrement-slowly | ~S-<XF86MonBrightnessDown>~ |
-| desktop-environment-volume-increment            | ~<XF86AudioRaiseVolume>~    |
-| desktop-environment-volume-decrement            | ~<XF86AudioLowerVolume>~    |
-| desktop-environment-volume-increment-slowly     | ~S-<XF86AudioRaiseVolume>~  |
-| desktop-environment-volume-decrement-slowly     | ~S-<XF86AudioLowerVolume>~  |
-| desktop-environment-toggle-mute                 | ~<XF86AudioMute>~           |
-| desktop-environment-toggle-microphone-mute      | ~<XF86AudioMicMute>~        |
-| desktop-environment-screenshot-part             | ~S-<print>~                 |
-| desktop-environment-screenshot                  | ~<print>~                   |
-| desktop-environment-lock-screen                 | ~s-l~ or ~<XF86ScreenSaver>~  |
-| desktop-environment-toggle-wifi                 | ~<XF86WLAN>~                |
-| desktop-environment-toggle-bluetooth            | ~<XF86Bluetooth>~           |
-| desktop-environment-toggle-music                | ~<XF86AudioPlay>~           |
-| desktop-environment-music-previous              | ~<XF86AudioPrev>~           |
-| desktop-environment-music-next                  | ~<XF86AudioNext>~           |
+| *Command*                                       | *Key binding*                |
+|-------------------------------------------------+------------------------------|
+| desktop-environment-brightness-increment        | ~<XF86MonBrightnessUp>~      |
+| desktop-environment-brightness-decrement        | ~<XF86MonBrightnessDown>~    |
+| desktop-environment-brightness-increment-slowly | ~S-<XF86MonBrightnessUp>~    |
+| desktop-environment-brightness-decrement-slowly | ~S-<XF86MonBrightnessDown>~  |
+| desktop-environment-volume-increment            | ~<XF86AudioRaiseVolume>~     |
+| desktop-environment-volume-decrement            | ~<XF86AudioLowerVolume>~     |
+| desktop-environment-volume-increment-slowly     | ~S-<XF86AudioRaiseVolume>~   |
+| desktop-environment-volume-decrement-slowly     | ~S-<XF86AudioLowerVolume>~   |
+| desktop-environment-toggle-mute                 | ~<XF86AudioMute>~            |
+| desktop-environment-toggle-microphone-mute      | ~<XF86AudioMicMute>~         |
+| desktop-environment-screenshot-part             | ~S-<print>~                  |
+| desktop-environment-screenshot                  | ~<print>~                    |
+| desktop-environment-lock-screen                 | ~s-l~ or ~<XF86ScreenSaver>~ |
+| desktop-environment-toggle-wifi                 | ~<XF86WLAN>~                 |
+| desktop-environment-toggle-bluetooth            | ~<XF86Bluetooth>~            |
+| desktop-environment-toggle-music                | ~<XF86AudioPlay>~            |
+| desktop-environment-music-previous              | ~<XF86AudioPrev>~            |
+| desktop-environment-music-next                  | ~<XF86AudioNext>~            |
 
 ** Configuration
 
