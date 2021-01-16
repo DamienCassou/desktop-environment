@@ -131,11 +131,11 @@ replaced by the desired new volume level."
   :type 'string)
 
 (defcustom desktop-environment-volume-toggle-command "amixer set Master toggle"
-  "Shell command toggling between muted and unmuted."
+  "Shell command toggling between muted and working."
   :type 'string)
 
 (defcustom desktop-environment-volume-toggle-microphone-command "amixer set Capture toggle"
-  "Shell command toggling microphone between muted and unmuted."
+  "Shell command toggling microphone between muted and working."
   :type 'string)
 
 
@@ -167,13 +167,13 @@ portion of the screen."
 ;;; Customization - wifi
 
 (defcustom desktop-environment-wifi-command "wifi toggle"
-  "Shell command toggling wifi."
+  "Shell command toggling WiFi."
   :type 'string)
 
 ;;; Customization - bluetooth
 
 (defcustom desktop-environment-bluetooth-command "bluetooth toggle"
-  "Shell command toggling bluetooth."
+  "Shell command toggling Bluetooth."
   :type 'string)
 
 
@@ -389,7 +389,7 @@ the screen."
 
 ;;;###autoload
 (defun desktop-environment-toggle-wifi ()
-  "Toggle wifi adapter on and off."
+  "Toggle WiFi adapter on and off."
   (interactive)
   (let ((async-shell-command-buffer 'new-buffer))
     (async-shell-command desktop-environment-wifi-command)))
@@ -398,7 +398,7 @@ the screen."
 
 ;;;###autoload
 (defun desktop-environment-toggle-bluetooth ()
-  "Toggle bluetooth on and off."
+  "Toggle Bluetooth on and off."
   (interactive)
   (let ((async-shell-command-buffer 'new-buffer))
     (async-shell-command desktop-environment-bluetooth-command)))
@@ -501,3 +501,5 @@ nil."
 
 (provide 'desktop-environment)
 ;;; desktop-environment.el ends here
+
+; LocalWords:  backlight
