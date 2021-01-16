@@ -10,8 +10,8 @@
           <img alt="MELPA" src="https://melpa.org/packages/desktop-environment-badge.svg"/>
         </a>
 
-        <a href="https://gitlab.petton.fr/DamienCassou/desktop-environment/commits/master">
-          <img alt="pipeline status" src="https://gitlab.petton.fr/DamienCassou/desktop-environment/badges/master/pipeline.svg" />
+        <a href="https://github.com/DamienCassou/desktop-environment/actions">
+          <img alt="pipeline status" src="https://github.com/DamienCassou/desktop-environment/workflows/CI/badge.svg" />
         </a>
       </p>
   #+END_HTML
