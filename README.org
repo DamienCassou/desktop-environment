@@ -116,6 +116,7 @@ customize-group RET desktop-environment RET~ to change them.
 | ~desktop-environment-screenshot-command~                  | Shell command taking a screenshot in the current working directory         |
 | ~desktop-environment-screenshot-partial-command~          | Shell command taking a partial screenshot in the current working directory |
 | ~desktop-environment-screenshot-directory~                | Directory where to save screenshots                                        |
+| ~desktop-environment-screenshot-delay-argument~           | Shell argument to append to the screenshot command to delay the screenshot |
 | ~desktop-environment-screenlock-command~                  | Shell command locking the screen                                           |
 | ~desktop-environment-wifi-command~                        | Shell command toggling wifi                                                |
 | ~desktop-environment-bluetooth-command~                   | Shell command toggling bluetooth                                           |
