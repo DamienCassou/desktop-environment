@@ -211,6 +211,10 @@ replacing the placeholder %d with the prefix argument."
   "Shell command for going to next song."
   :type 'string)
 
+(defcustom desktop-environment-music-stop-command "playerctl stop"
+  "Shell command for stopping the music player instance."
+  :type 'string)
+
 
 ;;; Customization - EXWM keybindings
 
@@ -487,6 +491,12 @@ the command `desktop-environment-screenshot-partial-command'."
   (message "%s"
            (desktop-environment--shell-command-to-string desktop-environment-music-next-command)))
 
+(defun desktop-environment-music-stop ()
+  "Stop music player instance."
+  (interactive)
+  (message "%s"
+           (desktop-environment--shell-command-to-string desktop-environment-music-stop-command)))
+
 ;;; Minor mode
 
 (defvar desktop-environment-mode-map
@@ -516,7 +526,8 @@ the command `desktop-environment-screenshot-partial-command'."
            ;; Music controls
            (,(kbd "<XF86AudioPlay>") . ,(function desktop-environment-toggle-music))
            (,(kbd "<XF86AudioPrev>") . ,(function desktop-environment-music-previous))
-           (,(kbd "<XF86AudioNext>") . ,(function desktop-environment-music-next))))
+           (,(kbd "<XF86AudioNext>") . ,(function desktop-environment-music-next))
+           (,(kbd "<XF86AudioStop>") . ,(function desktop-environment-music-stop))))
         (map (make-sparse-keymap)))
     (dolist (keybinding desktop-environment--keybindings)
       (define-key map (car keybinding) (cdr keybinding)))

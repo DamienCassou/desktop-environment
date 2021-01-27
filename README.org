@@ -72,6 +72,7 @@ keybinding if ~desktop-environment-mode~ is enabled:
 | desktop-environment-toggle-music                | ~<XF86AudioPlay>~            |
 | desktop-environment-music-previous              | ~<XF86AudioPrev>~            |
 | desktop-environment-music-next                  | ~<XF86AudioNext>~            |
+| desktop-environment-music-stop                  | ~<XF86AudioStop>~            |
 
 ** Configuration
 
@@ -123,6 +124,7 @@ customize-group RET desktop-environment RET~ to change them.
 | ~desktop-environment-music-toggle-command~                | Shell command toggling the music player                                    |
 | ~desktop-environment-music-previous-command~              | Shell command for going to previous song                                   |
 | ~desktop-environment-music-next-command~                  | Shell command for going to next song                                       |
+| ~desktop-environment-music-stop-command~                  | Shell command for stopping the music player                                |
 
 **** Using light instead of brightnessctl
 
