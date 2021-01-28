@@ -503,7 +503,7 @@ the command `desktop-environment-screenshot-partial-command'."
            (,(kbd "S-<XF86AudioLowerVolume>") . ,(function desktop-environment-volume-decrement-slowly))
            (,(kbd "<XF86AudioMute>") . ,(function desktop-environment-toggle-mute))
            (,(kbd "<XF86AudioMicMute>") . ,(function desktop-environment-toggle-microphone-mute))
-           ;; Volume
+           ;; Screenshot
            (,(kbd "S-<print>") . ,(function desktop-environment-screenshot-part))
            (,(kbd "<print>") . ,(function desktop-environment-screenshot))
            ;; Screen locking
