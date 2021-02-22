@@ -448,7 +448,6 @@ the command `desktop-environment-screenshot-partial-command'."
 (defun desktop-environment-lock-screen ()
   "Lock the screen, preventing anyone without a password from using the system."
   (interactive)
-  ;; Run command asynchronously so that Emacs does not wait in the background.
   (shell-command desktop-environment-screenlock-command))
 
 
