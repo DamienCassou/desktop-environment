@@ -410,7 +410,7 @@ the command `desktop-environment-screenshot-command'."
                              " "
                              (format desktop-environment-screenshot-delay-argument delay))
                    desktop-environment-screenshot-command)))
-    (start-process-shell-command "desktop-environment-screenshot" nil command)))
+    (shell-command command)))
 
 ;;;###autoload
 (defun desktop-environment-screenshot-part (&optional delay)
@@ -439,7 +439,7 @@ the command `desktop-environment-screenshot-partial-command'."
                              (format desktop-environment-screenshot-delay-argument delay))
                    desktop-environment-screenshot-partial-command)))
     (message "Please select the part of your screen to shoot.")
-    (start-process-shell-command "desktop-environment-screenshot" nil command)))
+    (shell-command command)))
 
 
 ;;; Commands - screen locking
@@ -449,7 +449,7 @@ the command `desktop-environment-screenshot-partial-command'."
   "Lock the screen, preventing anyone without a password from using the system."
   (interactive)
   ;; Run command asynchronously so that Emacs does not wait in the background.
-  (start-process-shell-command "lock" nil desktop-environment-screenlock-command))
+  (shell-command desktop-environment-screenlock-command))
 
 
 ;;; Commands - wifi
