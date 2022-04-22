@@ -131,8 +131,19 @@ replaced by the desired new volume level."
   :type 'string)
 
 (defcustom desktop-environment-volume-toggle-command "amixer set Master toggle"
-  "Shell command toggling between muted and working."
+  "Shell command toggling between muted and working.
+If you change this variable, you might want to change
+`desktop-environment-volume-toggle-regexp' as well."
   :type 'string)
+
+(defcustom desktop-environment-volume-toggle-regexp (rx (or "[on]" "[off]"))
+  "Regular expression matching volume state (muted or working).
+
+This regular expression will be tested against the result of
+`desktop-environment-volume-toggle-command' and
+`desktop-environment-volume-toggle-microphone-command' and group
+0 must match the current volume state."
+  :type 'regexp)
 
 (defcustom desktop-environment-volume-toggle-microphone-command "amixer set Capture toggle"
   "Shell command toggling microphone between muted and working."
@@ -357,15 +368,21 @@ replacing the placeholder %d with the prefix argument."
 (defun desktop-environment-toggle-mute ()
   "Toggle between muted and un-muted."
   (interactive)
-  (message "%s"
-           (desktop-environment--shell-command-to-string desktop-environment-volume-toggle-command)))
+  (message "Sound %s"
+           (let ((output (desktop-environment--shell-command-to-string desktop-environment-volume-toggle-command)))
+             (save-match-data
+               (string-match desktop-environment-volume-toggle-regexp output)
+               (match-string 0 output)))))
 
 ;;;###autoload
 (defun desktop-environment-toggle-microphone-mute ()
   "Toggle microphone between muted and un-muted."
   (interactive)
-  (message "%s"
-           (desktop-environment--shell-command-to-string desktop-environment-volume-toggle-microphone-command)))
+  (message "Mic %s"
+           (let ((output (desktop-environment--shell-command-to-string desktop-environment-volume-toggle-microphone-command)))
+             (save-match-data
+               (string-match desktop-environment-volume-toggle-regexp output)
+               (match-string 0 output)))))
 
 
 ;;; Commands - keyboard backlight
