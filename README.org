@@ -159,7 +159,7 @@ Set to ~nil~ to disable any kind of special behavior in the presence of EXWM.
 
 ** License
 
-See [[file:COPYING][COPYING]]. Copyright (c) 2018 Damien Cassou.
+See [[file:COPYING][COPYING]]. Copyright (c) 2018-2022 Damien Cassou.
 
   #+BEGIN_HTML
   <a href="https://liberapay.com/DamienCassou/donate">
