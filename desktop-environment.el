@@ -371,14 +371,18 @@ replacing the placeholder %d with the prefix argument."
 ;;; Commands - keyboard backlight
 ;;;###autoload
 (defun desktop-environment-keyboard-backlight-increment ()
-  "Increment keyboard backlight by `desktop-environment-keyboard-backlight-normal-increment'."
+  "Increment keyboard backlight.
+The increment step is configured with
+`desktop-environment-keyboard-backlight-normal-increment'."
   (interactive)
   (desktop-environment-keyboard-backlight-set
    (+ desktop-environment-keyboard-backlight-normal-increment
       (desktop-environment-keyboard-backlight-get))))
 
 (defun desktop-environment-keyboard-backlight-decrement ()
-  "Decrement keyboard backlight by `desktop-environment-keyboard-backlight-normal-decrement'."
+  "Decrement keyboard backlight.
+The decrement step is configured with
+`desktop-environment-keyboard-backlight-normal-decrement'."
   (interactive)
   (desktop-environment-keyboard-backlight-set
    (+ desktop-environment-keyboard-backlight-normal-decrement
