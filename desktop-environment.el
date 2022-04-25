@@ -142,7 +142,8 @@ If you change this variable, you might want to change
 This regular expression will be tested against the result of
 `desktop-environment-volume-toggle-command' and
 `desktop-environment-volume-toggle-microphone-command' and group
-0 must match the current volume state."
+0 must match the current volume state.  Set to nil if the toggle
+command generates no output."
   :type 'regexp)
 
 (defcustom desktop-environment-volume-toggle-microphone-command "amixer set Capture toggle"
@@ -368,21 +369,27 @@ replacing the placeholder %d with the prefix argument."
 (defun desktop-environment-toggle-mute ()
   "Toggle between muted and un-muted."
   (interactive)
-  (message "Sound %s"
-           (let ((output (desktop-environment--shell-command-to-string desktop-environment-volume-toggle-command)))
-             (save-match-data
-               (string-match desktop-environment-volume-toggle-regexp output)
-               (match-string 0 output)))))
+  (message (let ((output (desktop-environment--shell-command-to-string desktop-environment-volume-toggle-command)))
+             (if desktop-environment-volume-toggle-regexp
+                 (format
+                  "Sound %s"
+                  (save-match-data
+                    (string-match desktop-environment-volume-toggle-regexp output)
+                    (match-string 0 output)))
+               "Sound toggled"))))
 
 ;;;###autoload
 (defun desktop-environment-toggle-microphone-mute ()
   "Toggle microphone between muted and un-muted."
   (interactive)
-  (message "Mic %s"
-           (let ((output (desktop-environment--shell-command-to-string desktop-environment-volume-toggle-microphone-command)))
-             (save-match-data
-               (string-match desktop-environment-volume-toggle-regexp output)
-               (match-string 0 output)))))
+  (message (let ((output (desktop-environment--shell-command-to-string desktop-environment-volume-toggle-microphone-command)))
+             (if desktop-environment-volume-toggle-regexp
+                 (format
+                  "Mic %s"
+                  (save-match-data
+                    (string-match desktop-environment-volume-toggle-regexp output)
+                    (match-string 0 output)))
+               "Mic toggled"))))
 
 
 ;;; Commands - keyboard backlight
