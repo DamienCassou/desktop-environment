@@ -242,7 +242,7 @@ replacing the placeholder %d with the prefix argument."
 (defun desktop-environment--shell-command-to-string (command)
   "Execute shell command COMMAND locally and return its output as a string."
    (let ((default-directory temporary-file-directory))
-      (shell-command-to-string command)))
+      (string-trim (shell-command-to-string command))))
 
 ;;; Helper functions - brightness
 
