@@ -553,6 +553,7 @@ the command `desktop-environment-screenshot-partial-command'."
            (,(kbd "<XF86Bluetooth>") . ,(function desktop-environment-toggle-bluetooth))
            ;; Music controls
            (,(kbd "<XF86AudioPlay>") . ,(function desktop-environment-toggle-music))
+           (,(kbd "<XF86AudioPause>") . ,(function desktop-environment-toggle-music))
            (,(kbd "<XF86AudioPrev>") . ,(function desktop-environment-music-previous))
            (,(kbd "<XF86AudioNext>") . ,(function desktop-environment-music-next))
            (,(kbd "<XF86AudioStop>") . ,(function desktop-environment-music-stop))))
