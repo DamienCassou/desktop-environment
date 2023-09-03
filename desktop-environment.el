@@ -1,6 +1,6 @@
 ;;; desktop-environment.el --- Helps you control your GNU/Linux computer  -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2018-2022  Damien Cassou
+;; Copyright (C) 2018-2023  Damien Cassou
 
 ;; Author: Damien Cassou <damien@cassou.me>, Nicolas Petton <nicolas@petton.fr>
 ;; Url: https://gitlab.petton.fr/DamienCassou/desktop-environment
